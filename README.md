@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# REIZ TECH HOMEWORK ASSIGNMENT DOCUMENT FOR FRONTEND DEVELOPER INTERN POSITION
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Assignment requirements
 
-## Available Scripts
+### 1. Please implement the task using a modern framework/ library (e.g., React.js, Angular.js or Vue.js).
 
-In the project directory, you can run:
+### 2. The task
 
-### `npm start`
+Using https://restcountries.com free API make a visualized representation of counties that displays country name,
+region, and area size. (Use https://restcountries.com/v2/all?fields=name,region,area to get only necessary data).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Requirements:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+• Create a repository using GIT and push your work to a remote (e.g., GitHub, Gitlab).
 
-### `npm test`
+• Fetch the data from the endpoint.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+• Display a list for the data.
 
-### `npm run build`
+• Make the list sortable alphabetically by name (ascending, descending).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+• Implement a filter(s) that filters countries:
+- That are smaller than Lithuania by area.
+- That are in “Oceania” region.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 3. Bonus points
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+• Use TypeScript
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+• Implement pagination
