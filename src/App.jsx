@@ -26,11 +26,24 @@ class App extends Component {
       ));
   }
 
+  onSearchChange = (event) /* We are going to get back an event */ => {
+    const searchField = event.target.value.toLocaleLowerCase(); /* describing the _non-empty_ search field and making it lowercase */
+
+    this.setState(
+      () => {
+        return { searchField };
+      }
+    );  /* setting the state to the list of _filtered_ countries */
+  }
+
   render() {
 
-    const filteredCountries = this.state.countries.filter(
+    const { countries, searchField } = this.state;
+    const { onSearchChange } = this;
+
+    const filteredCountries = countries.filter(
       (country) => {
-        return country.name.toLocaleLowerCase().includes(this.state.searchField);
+        return country.name.toLocaleLowerCase().includes(searchField);
       }
     );
 
@@ -43,17 +56,7 @@ class App extends Component {
 
         <input className='search-box' type='search' placeholder='Search countries'
 
-          onChange={
-            (event) /* We are going to get back an event */ => {
-              const searchField = event.target.value.toLocaleLowerCase(); /* describing the _non-empty_ search field and making it lowercase */
-
-              this.setState(
-                () => {
-                  return { searchField };
-                }
-              )  /* setting the state to the list of _filtered_ countries */
-            }
-          }
+          onChange={onSearchChange}
 
         />
 
