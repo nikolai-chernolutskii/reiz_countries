@@ -61,10 +61,16 @@ class App extends Component {
           onChange={onSearchChange}
 
         />
+        <label htmlFor="sort">Sort countries</label>
+        <select name="sort" id="country_sort">
+          <option value="AZ">Sort A-->Z</option>
+          <option value="ZA">Sort Z-->A</option>
+        </select>
 
         <input className='checkbox checkbox__area' type='checkbox' id='area' /> <label htmlFor='area'>Smaller than Lithuania</label>
 
-        <input className='checkbox checkbox__region' type='checkbox' id='region' /> <label htmlFor='region'>Located in Oceania</label>
+        <input className='checkbox checkbox__region' type='checkbox' id='region' /> <label htmlFor='region'>Located in Oceania</label><br />
+
 
         <ul className='country__list'>
           {
