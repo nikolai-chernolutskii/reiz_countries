@@ -1,6 +1,7 @@
 import { Component } from 'react';
 
-// import './App.css';
+import CountryList from './components/countries-list/country-list.component';
+import SearchBox from './components/search-box/search-box.component';
 
 class App extends Component {
 
@@ -56,42 +57,19 @@ class App extends Component {
     return (
       <div className="App">
 
-        <input className='search-box' type='search' placeholder='Search countries'
+        <SearchBox className='search-box' onChangeHandler={onSearchChange} placeholder='Search countries'  />
 
-          onChange={onSearchChange}
-
-        />
         <label htmlFor="sort">Sort countries</label>
         <select name="sort" id="country_sort">
-          <option value="AZ">Sort A-->Z</option>
-          <option value="ZA">Sort Z-->A</option>
+          <option value="AZ">Sort A--&gt;Z</option>
+          <option value="ZA">Sort Z--&gt;A</option>
         </select>
 
         <input className='checkbox checkbox__area' type='checkbox' id='area' /> <label htmlFor='area'>Smaller than Lithuania</label>
 
         <input className='checkbox checkbox__region' type='checkbox' id='region' /> <label htmlFor='region'>Located in Oceania</label><br />
 
-
-        <ul className='country__list'>
-          {
-            filteredCountries.map(
-              (country) => {
-                return (
-                  <li className='country__group' key={country.name}>
-                    <p className='name'>Country: {country.name}</p>
-                    <p className='area'>Area: {country.area} km<sup>2</sup></p>
-                    <p className='region'>Region: {country.region}</p>
-                  </li>
-
-                  // <div className='country__group' key={country.name}>
-                  // <p className='name'>Country: {country.name}</p>
-                  // <p className='area'>Area: {country.area} km<sup>2</sup></p>
-                  // <p className='region'>Region: {country.region}</p>
-                  // </div>
-                )
-              })
-          }
-        </ul>
+        <CountryList classNameList='country__list' classNameListItem='country__group' classNameListSubItem1='name' classNameListSubItem2='area' classNameListSubItem3='region' countries={filteredCountries} />
       </div>
     )
   }
