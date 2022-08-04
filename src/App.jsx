@@ -2,6 +2,8 @@ import { Component } from 'react';
 
 import CountryList from './components/countries-list/country-list.component';
 import SearchBox from './components/search-box/search-box.component';
+import SortAlpha from './components/sort-alpha/sort-alpha.component';
+import FilterCheckbox from './components/filter-checkbox/filter.checkbox.component';
 
 class App extends Component {
 
@@ -40,7 +42,7 @@ class App extends Component {
   }
 
   render() {
-
+    // Desctructuring
     const { countries, searchField } = this.state;
     const { onSearchChange } = this;
 
@@ -57,19 +59,17 @@ class App extends Component {
     return (
       <div className="App">
 
-        <SearchBox className='search-box' onChangeHandler={onSearchChange} placeholder='Search countries'  />
+        <SearchBox className='search-box' onChangeHandler={onSearchChange} placeholder='Search countries' />
 
-        <label htmlFor="sort">Sort countries</label>
-        <select name="sort" id="country_sort">
-          <option value="AZ">Sort A--&gt;Z</option>
-          <option value="ZA">Sort Z--&gt;A</option>
-        </select>
+        <SortAlpha />
 
-        <input className='checkbox checkbox__area' type='checkbox' id='area' /> <label htmlFor='area'>Smaller than Lithuania</label>
+        <FilterCheckbox className='checkbox__area' id='area' />
+        <label htmlFor='area'>Smaller than Lithuania</label>
+        
+        <FilterCheckbox className='checkbox__region' id='region' />
+        <label htmlFor='region'>Located in Oceania</label><br />
 
-        <input className='checkbox checkbox__region' type='checkbox' id='region' /> <label htmlFor='region'>Located in Oceania</label><br />
-
-        <CountryList classNameList='country__list' classNameListItem='country__group' classNameListSubItem1='name' classNameListSubItem2='area' classNameListSubItem3='region' countries={filteredCountries} />
+        <CountryList classNameList='country__list' countries={filteredCountries} />
       </div>
     )
   }
