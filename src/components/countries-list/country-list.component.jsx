@@ -1,28 +1,26 @@
 import { Component } from "react";
+import CountryCard from "../country-card/country-card.component";
 
- class CountryList extends Component {
+class CountryList extends Component {
 
-    render() {
+  render() {
+    // Destructuring
+    const { countries, classNameList } = this.props;
 
-        const {countries, classNameList, classNameListItem, classNameListSubItem1, classNameListSubItem2, classNameListSubItem3} = this.props;
+    return (
+      <ul className={classNameList}>
+        {countries.map(
+          (country) => {
+            return (
+              <CountryCard country={country}
+                classNameListItem='country__group'
+              />
+            )
+          })
+        }
+      </ul>
+    )
+  }
+}
 
-        return (
-            <ul className={classNameList}>
-              {
-                countries.map(
-                  (country) => {
-                    return (
-                      <li className={classNameListItem} key={country.name}>
-                        <p className={classNameListSubItem1}>Country: {country.name}</p>
-                        <p className={classNameListSubItem2}>Area: {country.area} km<sup>2</sup></p>
-                        <p className={classNameListSubItem3}>Region: {country.region}</p>
-                      </li>
-                    )
-                  })
-              }
-            </ul>
-        )
-    }
- }
-
- export default CountryList;
+export default CountryList;
