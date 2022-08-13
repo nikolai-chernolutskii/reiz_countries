@@ -1,14 +1,8 @@
-import { Component } from "react";
+const FilterCheckbox = ({ className, id }) => {
 
-class FilterCheckbox extends Component {
-    render() {
-
-        const { className, id } = this.props;
-
-        return (
-            <input className={`checkbox ${className}`} type='checkbox' id={ id }/>
+    return (
+        <input className={`checkbox ${className}`} type='checkbox' id={id} />
     )
-    }
 }
 
 export default FilterCheckbox;
