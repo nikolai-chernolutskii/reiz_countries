@@ -1,8 +1,4 @@
-import { Component } from "react";
-
-class SortAlpha extends Component {
-    render() {
-
+const SortAlpha = () => {
         return (
             <div className="sortAlphaContainer">
                 <label htmlFor="country_sort">Sort countries</label>
@@ -12,7 +8,6 @@ class SortAlpha extends Component {
                 </select>
             </div>
         )
-    }
 }
 
 export default SortAlpha;

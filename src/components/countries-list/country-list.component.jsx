@@ -1,11 +1,6 @@
-import { Component } from "react";
 import CountryCard from "../country-card/country-card.component";
 
-class CountryList extends Component {
-
-  render() {
-    // Destructuring
-    const { countries, classNameList } = this.props;
+const CountryList = ({ countries, classNameList }) => {
 
     return (
       <ul className={classNameList}>
@@ -20,7 +15,6 @@ class CountryList extends Component {
         }
       </ul>
     )
-  }
 }
 
 export default CountryList;

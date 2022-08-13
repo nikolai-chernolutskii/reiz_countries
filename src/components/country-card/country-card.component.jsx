@@ -1,25 +1,18 @@
-import { Component } from "react";
 import CountryData from "../country-data/country-data.component";
 
-class CountryCard extends Component {
+const CountryCard = ({ classNameListItem, country }) => {
 
-    render() {
+    const { name, area, region } = country;
 
-        const { classNameListItem } = this.props;
+    return (
+        <li className={classNameListItem} key={name}>
+            <CountryData classNameListSubItem='name'>Country: {name}</CountryData>
 
-        const { name, area, region } = this.props.country;
+            <CountryData classNameListSubItem='area'>Area (km<sup>2</sup>): {area}</CountryData>
 
-        return (
-            <li className={classNameListItem} key={name}>
-                <CountryData classNameListSubItem='name'>Country: {name}</CountryData>
-
-                <CountryData classNameListSubItem='area'>Area (km<sup>2</sup>): {area}</CountryData>
-
-                <CountryData classNameListSubItem='region'>Region: {region}</CountryData>
-            </li>
-        )
-    }
-
+            <CountryData classNameListSubItem='region'>Region: {region}</CountryData>
+        </li>
+    )
 }
 
 export default CountryCard;
