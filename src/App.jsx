@@ -17,7 +17,7 @@ const App = () => {
   const [checkRegion, setCheckRegion] = useState(false);
   const [checkArea, setCheckArea] = useState(false);
 
-  // Bringing data from an external api
+  // Fetching the countries
   useEffect(() => {
     // set loading to true
     setLoading(true);
@@ -36,11 +36,12 @@ const App = () => {
   // Filtering the countries
   useEffect(() => {
     const newFilteredCountries = countries.filter((country) => {
-      return (
-        country.name.toLocaleLowerCase().includes(searchField) ||
-        country.region.toLocaleLowerCase().includes(searchField) /* ||
-        country.region === 'Oceania' */
-      )
+      // array of conditions to filter the countries
+      // !checkRegion || country.region === 'Oceania' - if the checkRegion is false, the country.region === 'Oceania' condition is ignored
+      // !checkArea || country.area < 65300 - if the checkArea is false, the country.area < 65300 condition is ignored
+      const conditions = [country.name.toLocaleLowerCase().includes(searchField) || country.region.toLocaleLowerCase().includes(searchField), !checkRegion || country.region === 'Oceania', !checkArea || country.area < 65300];
+      // Array.every() method to check if all the conditions are true for each country. If all the conditions are true, the country is added to the newFilteredCountries array and displayed on the page
+      return conditions.every(condition => condition);
     }).sort((a, b) => {
       let order = (orderBy === 'asc') ? 1 : -1;
       return (
@@ -50,8 +51,8 @@ const App = () => {
     });
 
     setFilteredCountries(newFilteredCountries);
+  }, [countries, searchField, orderBy, sortBy, checkRegion, checkArea]);
 
-  }, [countries, searchField, orderBy, sortBy]);
 
   const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLocaleLowerCase(); /* describing the _non-empty_ search field and making it lowercase */
@@ -67,20 +68,16 @@ const App = () => {
     // } 
 
     setCheckRegion(regionStatus)
-
-    console.log(event)
   };
 
   const handleCheckArea = (event) => {
     const areaStatus = event.target.checked;
 
     setCheckArea(areaStatus)
-
-    console.log(event)
   }
 
   if (loading) return <h2>Country list is loading...</h2>;
-  if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>;
+  if (error) return <pre>Oops! Something went wrong...</pre>;
   if (!countries) return <h1>No data available</h1>;
 
   return (
