@@ -7,6 +7,8 @@ import FilterCheckbox from './components/filter-checkbox/filter.checkbox.compone
 
 const App = () => {
 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [countries, setCountries] = useState([]);
   const [filteredCountries, setFilteredCountries] = useState(countries);
   const [searchField, setSearchField] = useState('');
@@ -17,12 +19,21 @@ const App = () => {
 
   // Bringing data from an external api
   useEffect(() => {
+    // set loading to true
+    setLoading(true);
+    // fetch the data from the API
     fetch('https://restcountries.com/v2/all?fields=name,region,area')
+      // convert the received response to JSON
       .then((response) => response.json())
-      .then((countries_api) => setCountries(countries_api));
-  }, []);
-  // callback function containing the code we want to be inside of our hook + array of dependencies containing the dependencies (if any) that, if changed, will trigger the callback function
+      // assign the countries_api name to the received data, call the setCountries function to set the state of the countries variable to the received data
+      .then((countries_api) => setCountries(countries_api))
+      // set loading to false, as it is done loading
+      .then(() => setLoading(false))
+      // handle errors - call the setError function
+      .catch((error) => setError(error));
+  }, /* set the dependency array as empty so that the useEffect function runs only after the first render */[]);
 
+  // Filtering the countries
   useEffect(() => {
     const newFilteredCountries = countries.filter((country) => {
       return (
@@ -68,6 +79,10 @@ const App = () => {
     console.log(event)
   }
 
+  if (loading) return <h2>Country list is loading...</h2>;
+  if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>;
+  if (!countries) return <h1>No data available</h1>;
+
   return (
     <div className="App">
 
@@ -93,18 +108,18 @@ const App = () => {
         checkStatus={checkRegion === true}
         onChangeHandler={handleCheckRegion}
         value='oceania'
-        // onClickHandler
-        />
-        <label htmlFor='region'>Located in Oceania</label>
-        
-        <FilterCheckbox
+      // onClickHandler
+      />
+      <label htmlFor='region'>Located in Oceania</label>
+
+      <FilterCheckbox
         className='checkbox__area'
         id='area'
         checkboxName='area'
         checkStatus={checkArea === true}
         onChangeHandler={handleCheckArea}
         value='lit_smaller'
-        // onClickHandler
+      // onClickHandler
       />
       <label htmlFor='area'>Smaller than Lithuania</label>
       <br />
