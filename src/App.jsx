@@ -25,7 +25,7 @@ const App = () => {
     fetch('https://restcountries.com/v2/all?fields=name,region,area')
       // convert the received response to JSON
       .then((response) => response.json())
-      // assign the countries_api name to the received data, call the setCountries function to set the state of the countries variable to the received data
+      // assign the "countries_api" name to the received data, call the setCountries function to set the state of the countries variable to the received data
       .then((countries_api) => setCountries(countries_api))
       // set loading to false, as it is done loading
       .then(() => setLoading(false))
