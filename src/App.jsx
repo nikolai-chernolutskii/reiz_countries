@@ -16,6 +16,9 @@ const App = () => {
   const [sortBy, setSortBy] = useState('name');
   const [checkRegion, setCheckRegion] = useState(false);
   const [checkArea, setCheckArea] = useState(false);
+  //////////////////////////
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
 
   // Fetching the countries
   useEffect(() => {
@@ -53,7 +56,6 @@ const App = () => {
     setFilteredCountries(newFilteredCountries);
   }, [countries, searchField, orderBy, sortBy, checkRegion, checkArea]);
 
-
   const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLocaleLowerCase(); /* describing the _non-empty_ search field and making it lowercase */
 
@@ -63,10 +65,6 @@ const App = () => {
   const handleCheckRegion = (event) => {
     const regionStatus = event.target.checked;
 
-    // if (event.target.checked === true) {
-    //   setCheckRegion(regionStatus)
-    // } 
-
     setCheckRegion(regionStatus)
   };
 
@@ -75,6 +73,13 @@ const App = () => {
 
     setCheckArea(areaStatus)
   }
+
+  //////////////////////////
+  const paginatedCountries = filteredCountries.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+  const handlePageSizeChange = event => {
+    setPageSize(event.target.value);
+    setCurrentPage(1);
+  };
 
   if (loading) return <h2>Country list is loading...</h2>;
   if (error) return <pre>Oops! Something went wrong...</pre>;
@@ -105,7 +110,6 @@ const App = () => {
         checkStatus={checkRegion === true}
         onChangeHandler={handleCheckRegion}
         value='oceania'
-      // onClickHandler
       />
       <label htmlFor='region'>Located in Oceania</label>
 
@@ -116,12 +120,31 @@ const App = () => {
         checkStatus={checkArea === true}
         onChangeHandler={handleCheckArea}
         value='lit_smaller'
-      // onClickHandler
       />
       <label htmlFor='area'>Smaller than Lithuania</label>
       <br />
 
-      <CountryList classNameList='country__list' countries={filteredCountries} />
+      <div>
+        <label htmlFor="page-size-select">Items per page:</label>
+        <select id="page-size-select" onChange={handlePageSizeChange} value={pageSize}>
+          <option value={10}>10</option>
+          <option value={25}>25</option>
+          <option value={100}>100</option>
+        </select>
+      </div>
+
+      <div>
+        <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === Math.ceil(filteredCountries.length / pageSize)}>
+          Next
+        </button>
+      </div>
+
+      <br />
+
+      <CountryList classNameList='country__list' countries={paginatedCountries} />
     </div>
   )
 }
