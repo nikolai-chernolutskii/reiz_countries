@@ -5,7 +5,7 @@ const CountryCard = ({ classNameListItem, country }) => {
     const { name, area, region } = country;
 
     return (
-        <li className={classNameListItem} key={name}>
+        <li className={classNameListItem}>
             <CountryData classNameListSubItem='name'>Country: {name}</CountryData>
 
             <CountryData classNameListSubItem='area'>Area (km<sup>2</sup>): {area}</CountryData>
