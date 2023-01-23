@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/reiz_countries/static/css/main.3868c1f4.css",
+    "main.js": "/reiz_countries/static/js/main.d76395ed.js",
+    "static/js/787.99aede05.chunk.js": "/reiz_countries/static/js/787.99aede05.chunk.js",
+    "index.html": "/reiz_countries/index.html",
+    "main.3868c1f4.css.map": "/reiz_countries/static/css/main.3868c1f4.css.map",
+    "main.d76395ed.js.map": "/reiz_countries/static/js/main.d76395ed.js.map",
+    "787.99aede05.chunk.js.map": "/reiz_countries/static/js/787.99aede05.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3868c1f4.css",
+    "static/js/main.d76395ed.js"
+  ]
+}
