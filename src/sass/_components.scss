@@ -1,0 +1,63 @@
+.searchbox {
+    width: 100%;
+    height: 2.5rem;
+    padding: 2rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    font-size: 1.4rem;
+    outline: none;
+}
+
+.sortFilter {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid lightgrey;
+    box-shadow: 0 1px 1px lightgrey;
+}
+
+.sortAlphaContainer {
+    display: flex;
+    align-items: center;
+
+    & input {
+        margin-left: 0.5rem;
+    }
+
+    & label:nth-of-type(2) {
+        margin-left: 1rem;
+    }
+}
+
+.checkbox {
+    margin: 0 1rem;
+}
+
+.checkbox__region {
+    margin-left: 4rem;
+}
+
+// card
+.country__group {
+    background-color: $color-group;
+    padding: 1rem;
+    border-radius: 3px;
+
+    transition: all 0.3s;
+
+    &:not(:last-child) {
+        margin-bottom: 1.5rem;
+    }
+
+    &:hover {
+        box-shadow: 1px 2px 3px lightgray;
+        background-color: darken($color-group, 10%);
+    }
+}
+
+.area {
+    margin: 0.5rem 0;
+}

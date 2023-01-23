@@ -87,60 +87,61 @@ const App = () => {
 
   return (
     <div className="App">
-
       <SearchBox
         className="searchbox"
         placeholder='Search countries/regions'
         onChangeHandler={onSearchChange}
       />
 
-      <SortAlpha
-        sortBy={sortBy}
-        onSortByChange={mySort => setSortBy(mySort)}
-        orderBy={orderBy}
-        onOrderByChange={myOrder => setOrderBy(myOrder)}
-      />
+      <div className="sortFilter">
+        <SortAlpha
+          sortBy={sortBy}
+          onSortByChange={mySort => setSortBy(mySort)}
+          orderBy={orderBy}
+          onOrderByChange={myOrder => setOrderBy(myOrder)}
+        />
 
-      <br />
+        <FilterCheckbox
+          className='checkbox__region'
+          id='region'
+          checkboxName='region'
+          checkStatus={checkRegion === true}
+          onChangeHandler={handleCheckRegion}
+          value='oceania'
+        />
+        <label htmlFor='region'>Located in Oceania</label>
 
-      <FilterCheckbox
-        className='checkbox__region'
-        id='region'
-        checkboxName='region'
-        checkStatus={checkRegion === true}
-        onChangeHandler={handleCheckRegion}
-        value='oceania'
-      />
-      <label htmlFor='region'>Located in Oceania</label>
-
-      <FilterCheckbox
-        className='checkbox__area'
-        id='area'
-        checkboxName='area'
-        checkStatus={checkArea === true}
-        onChangeHandler={handleCheckArea}
-        value='lit_smaller'
-      />
-      <label htmlFor='area'>Smaller than Lithuania</label>
-      <br />
-
-      <div>
-        <label htmlFor="page-size-select">Items per page:</label>
-        <select id="page-size-select" onChange={handlePageSizeChange} value={pageSize}>
-          <option value={10}>10</option>
-          <option value={25}>25</option>
-          <option value={100}>100</option>
-        </select>
+        <FilterCheckbox
+          className='checkbox__area'
+          id='area'
+          checkboxName='area'
+          checkStatus={checkArea === true}
+          onChangeHandler={handleCheckArea}
+          value='lit_smaller'
+        />
+        <label htmlFor='area'>Smaller than Lithuania</label>
       </div>
 
-      <div>
-        <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
-          Previous
-        </button>
-        <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === Math.ceil(filteredCountries.length / pageSize)}>
-          Next
-        </button>
+      <div className='paginationContainer'>
+        <div>
+          <label htmlFor="page-size-select">Items per page:</label>
+          <select id="page-size-select" onChange={handlePageSizeChange} value={pageSize}>
+            <option value={10}>10</option>
+            <option value={25}>25</option>
+            <option value={100}>100</option>
+          </select>
+        </div>
+
+        <div>
+          <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+            Prev
+          </button>
+          <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === Math.ceil(filteredCountries.length / pageSize)}>
+            Next
+          </button>
+        </div>
       </div>
+
 
       <br />
 
