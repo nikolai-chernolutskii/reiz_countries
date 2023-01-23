@@ -11,20 +11,20 @@ region, and area size. (Use https://restcountries.com/v2/all?fields=name,region,
 
 Requirements:
 
-• Create a repository using GIT and push your work to a remote (e.g., GitHub, Gitlab).
+[x] Create a repository using GIT and push your work to a remote (e.g., GitHub, Gitlab).
 
-• Fetch the data from the endpoint.
+[x] Fetch the data from the endpoint.
 
-• Display a list for the data.
+[x] Display a list for the data.
 
-• Make the list sortable alphabetically by name (ascending, descending).
+[x] Make the list sortable alphabetically by name (ascending, descending).
 
-• Implement a filter(s) that filters countries:
+[x] Implement a filter(s) that filters countries:
 - That are smaller than Lithuania by area.
 - That are in “Oceania” region.
 
 ### 3. Bonus points
 
-• Use TypeScript
+[] Use TypeScript
 
-• Implement pagination
+[x] Implement pagination
