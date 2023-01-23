@@ -1,12 +1,12 @@
 body {
-    font-family: 'Barlow', sans-serif;
+    font-family: "Barlow", sans-serif;
 }
 
 h1 {
     font-size: 2.4rem;
 }
 
-.checkbox+label {
+label {
     font-size: 1.2rem;
 }
 
@@ -14,6 +14,7 @@ h1 {
     font-size: 1.8rem;
 }
 
-.area, .region {
+.area,
+.region {
     font-size: 1.6rem;
 }

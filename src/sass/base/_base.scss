@@ -12,9 +12,13 @@ html {
     @include respond(tab-land) {
         font-size: 56.25%; //1rem = 9px; 9px/16px = 56.25%
     }
-    
+
     @include respond(tab-port) {
         font-size: 50%; //1rem = 8px; 8px/16px = 50%
+    }
+
+    @include respond(phone) {
+        font-size: 37.5%; //1rem = 6px; 6px/16px = 37.5%
     }
 
     @include respond(big-desktop) {
@@ -27,7 +31,7 @@ body {
     padding: 3rem;
     background-color: $color-bg-light;
 
-    // @include respond(tab-port) {
-    //     padding: 0;
-    // }
+    @include respond(tab-port) {
+        padding: 0;
+    }
 }
